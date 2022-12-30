@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(), // 홈페이지 보여주기
+      home: HomePage(), // Display HomePage
     );
   }
 }
@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 음식 사진 데이터
+    // Movie Listings
     List<Map<String, dynamic>> dataList = [
       {
         "category": "탑건: 매버릭",
@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
       },
     ];
 
-    // 화면에 보이는 영역
+    // Display Area
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -59,7 +59,7 @@ class HomePage extends StatelessWidget {
           style: TextStyle(
             color: Colors.black,
             fontSize: 28,
-            fontStyle: FontStyle.italic,
+            fontWeight: FontWeight.bold,
           ),
         ),
         actions: <Widget>[
@@ -70,6 +70,66 @@ class HomePage extends StatelessWidget {
               size: 28,
             ),
             onPressed: () {},
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 16,
+              bottom: 8,
+              left: 8,
+              right: 8,
+            ),
+            child: TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: "Search a Movie",
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () {},
+                ),
+              ),
+            ),
+          ),
+          Divider(color: Colors.grey),
+          Expanded(
+            child: ListView.builder(
+              itemCount: dataList.length,
+              itemBuilder: (BuildContext context, int index) {
+                String imgUrl = dataList[index]['imgUrl'];
+                String category = dataList[index]['category'];
+                return Card(
+                  elevation: 8,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Container(
+                        child: Image.network(
+                          height: 180,
+                          width: double.infinity,
+                          imgUrl,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Container(
+                        height: 180,
+                        width: double.infinity,
+                        color: Colors.black.withOpacity(0.3),
+                      ),
+                      Text(
+                        category,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
           ),
         ],
       ),
