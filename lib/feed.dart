@@ -4,14 +4,17 @@ import 'package:flutter/material.dart';
 class Feed extends StatefulWidget {
   const Feed({
     Key? key,
+    required this.imageUrl,
   }) : super(key: key);
+
+  final String imageUrl; // variable of image
 
   @override
   State<Feed> createState() => _FeedState();
 }
 
 class _FeedState extends State<Feed> {
-  // 좋아요 여부
+  // the value of likes
   bool isFavorite = false;
 
   @override
@@ -24,7 +27,7 @@ class _FeedState extends State<Feed> {
           borderRadius: BorderRadius.circular(8),
           // Image
           child: Image.network(
-            'https://cdn2.thecatapi.com/images/6bt.jpg',
+            widget.imageUrl, 
             width: 100,
             height: 100,
             fit: BoxFit.cover,
@@ -66,9 +69,9 @@ class _FeedState extends State<Feed> {
                   Spacer(),
                   GestureDetector(
                     onTap: () {
-                      // 화면 갱신
+                      // refresh
                       setState(() {
-                        isFavorite = !isFavorite; // 좋아요 토글
+                        isFavorite = !isFavorite; 
                       });
                     },
                     child: Row(
