@@ -324,30 +324,40 @@ class SecondTab extends StatelessWidget {
                   const EdgeInsets.symmetric(vertical: 32.0, horizontal: 8.0),
               child: Row(
                 children: [
-                  Column(
-                    children: [
-                      Icon(
-                        Icons.person,
-                        color: Colors.white,
-                      ),
-                      Text(
-                        "Library",
-                        style: TextStyle(color: Colors.white),
-                      )
-                    ],
+                  GestureDetector(
+                    onTap: () {
+                      DefaultTabController.of(context)!.animateTo(0);
+                    },
+                    child: Column(
+                      children: [
+                        Icon(
+                          Icons.person,
+                          color: Colors.white,
+                        ),
+                        Text(
+                          "Library",
+                          style: TextStyle(color: Colors.white),
+                        )
+                      ],
+                    ),
                   ),
                   Spacer(),
-                  Column(
-                    children: [
-                      Icon(
-                        Icons.show_chart,
-                        color: Colors.white,
-                      ),
-                      Text(
-                        "Charts",
-                        style: TextStyle(color: Colors.white),
-                      )
-                    ],
+                  GestureDetector(
+                    onTap: () {
+                      DefaultTabController.of(context)!.animateTo(2);
+                    },
+                    child: Column(
+                      children: [
+                        Icon(
+                          Icons.show_chart,
+                          color: Colors.white,
+                        ),
+                        Text(
+                          "Charts",
+                          style: TextStyle(color: Colors.white),
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),
