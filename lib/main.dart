@@ -279,6 +279,219 @@ class ThirdTab extends StatelessWidget {
       ],
     };
 
-    return Center(child: Text('Third Page'));
+    return SafeArea(
+      child: Column(
+        children: [
+          Text(
+            'Charts',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),
+          ),
+          SizedBox(height: 16),
+          Expanded(
+            child: ListView(
+              children: [
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: 180,
+                      color: Colors.purple[900],
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                          width: 340,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.white),
+                            ),
+                            child: Text(
+                              "COUNTRY & CITY CHARTS",
+                              style: TextStyle(
+                                color: Colors.purple[900],
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "FROM AROUND THE WORLD",
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 8,
+                  color: Colors.grey[400],
+                ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            "Korea Chart",
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          Spacer(),
+                          Text(
+                            "See All",
+                            style: TextStyle(color: Colors.blue),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    ...chartData['korea']!.map((song) {
+                      String imageUrl = song['imageUrl']!;
+                      String name = song['name']!;
+                      String artist = song['artist']!;
+
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Image.network(
+                              imageUrl,
+                              width: MediaQuery.of(context).size.width * 0.29,
+                            ),
+                            Text(
+                              name,
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text(artist),
+                          ],
+                        ),
+                      );
+                    }),
+                  ],
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 8,
+                  color: Colors.grey[400],
+                ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            "Global Chart",
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          Spacer(),
+                          Text(
+                            "See All",
+                            style: TextStyle(color: Colors.blue),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    ...chartData['global']!.map((song) {
+                      String imageUrl = song['imageUrl']!;
+                      String name = song['name']!;
+                      String artist = song['artist']!;
+
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Image.network(
+                              imageUrl,
+                              width: MediaQuery.of(context).size.width * 0.29,
+                            ),
+                            Text(
+                              name,
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text(artist),
+                          ],
+                        ),
+                      );
+                    }),
+                  ],
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 8,
+                  color: Colors.grey[400],
+                ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            "NewYork Chart",
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          Spacer(),
+                          Text(
+                            "See All",
+                            style: TextStyle(color: Colors.blue),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    ...chartData['newyork']!.map((song) {
+                      String imageUrl = song['imageUrl']!;
+                      String name = song['name']!;
+                      String artist = song['artist']!;
+
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Image.network(
+                              imageUrl,
+                              width: MediaQuery.of(context).size.width * 0.29,
+                            ),
+                            Text(
+                              name,
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text(artist),
+                          ],
+                        ),
+                      );
+                    }),
+                  ],
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
