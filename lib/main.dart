@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-// 첫번째 페이지
+// First Page
 class FirstTab extends StatelessWidget {
   const FirstTab({Key? key}) : super(key: key);
 
@@ -118,21 +118,108 @@ class FirstTab extends StatelessWidget {
       },
     ];
 
-    return Center(child: Text('첫번째 페이지'));
+    return Center(child: Text('First Page'));
   }
 }
 
-// 두번째 페이지
+// Second Page
 class SecondTab extends StatelessWidget {
   const SecondTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('두번째 페이지'));
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [Colors.blue[300]!, Colors.blue[900]!],
+        ),
+      ),
+      child: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 32.0, horizontal: 8.0),
+              child: Row(
+                children: [
+                  Column(
+                    children: [
+                      Icon(
+                        Icons.person,
+                        color: Colors.white,
+                      ),
+                      Text(
+                        "Library",
+                        style: TextStyle(color: Colors.white),
+                      )
+                    ],
+                  ),
+                  Spacer(),
+                  Column(
+                    children: [
+                      Icon(
+                        Icons.show_chart,
+                        color: Colors.white,
+                      ),
+                      Text(
+                        "Charts",
+                        style: TextStyle(color: Colors.white),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 80),
+            Text(
+              "Tap to Shazam",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 30),
+            Container(
+              alignment: Alignment.center,
+              width: 200,
+              height: 200,
+              decoration: BoxDecoration(
+                color: Colors.blue[300],
+                shape: BoxShape.circle,
+              ),
+              child: Image.network(
+                "https://i.ibb.co/hxNbZ8p/shazam.png",
+                color: Colors.white,
+                width: 130,
+                height: 130,
+              ),
+            ),
+            SizedBox(height: 70),
+            Container(
+              alignment: Alignment.center,
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                color: Colors.blue[300],
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                Icons.search,
+                color: Colors.white,
+                size: 30,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
 
-// 세번째 페이지
+// Third Page
 class ThirdTab extends StatelessWidget {
   const ThirdTab({Key? key}) : super(key: key);
 
@@ -192,6 +279,6 @@ class ThirdTab extends StatelessWidget {
       ],
     };
 
-    return Center(child: Text('세번째 페이지'));
+    return Center(child: Text('Third Page'));
   }
 }
